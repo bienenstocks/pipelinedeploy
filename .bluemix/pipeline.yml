@@ -63,8 +63,8 @@ stages:
                 \"name\" : \"streaming-analytics\",
                 \"credentials\" : $PIPELINE_SA_INSTANCE
               }],
-              \"message_hub\": $PIPELINE_MH_INSTANCE,
-              \"cos\": $PIPELINE_COS_INSTANCE
+              \"messagehub\": $PIPELINE_MH_INSTANCE,
+              \"aws\": $PIPELINE_COS_INSTANCE
             }" > vcap.json
 
       java -cp ./example-starter-kit-0.1-SNAPSHOT.jar:./dependency/com.ibm.streams.beam-1.2.1/com.ibm.streams.beam/lib/com.ibm.streams.beam.translation.jar \
