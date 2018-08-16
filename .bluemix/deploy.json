@@ -104,13 +104,13 @@
         {
           "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service access key",
+          "title": "Cloud Object Storage Service Access key Id",
           "key": "aws-access-key-id"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service access key",
+          "title": "Cloud Object Storage Service Secret key",
           "key": "aws-secret-access-key"
         },
         {
