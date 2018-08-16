@@ -48,7 +48,10 @@ services:
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           SA_INSTANCE: '{{form.pipeline.parameters.sa-instance}}'
           MH_INSTANCE: '{{form.pipeline.parameters.mh-instance}}'
-          COS_INSTANCE: '{{form.pipeline.parameters.cos-instance}}'
+          COS_SECRET: '{{form.pipeline.parameters.aws-secret-access-key}}'
+          COS_KEY: '{{form.pipeline.parameters.aws-access-key-id}}'
+          COS_BUCKET: '{{form.pipeline.parameters.aws-bucket}}'
+          COS_ENDPOINT: '{{form.pipeline.parameters.aws-endpoint}}'
         execute: true
   webide:
     service_id: orion

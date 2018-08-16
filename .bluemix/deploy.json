@@ -22,13 +22,25 @@
           "description": "Message Hub Instance Name",
           "type": "string"
         },
-        "cos-instance": {
-          "description": "Cloud Object Storage Instance Name",
+       "aws-endpoint": {
+          "description": "Cloud Object Storage Endpoint Name",
+          "type": "string"
+        },
+        "aws-access-key-id": {
+           "description": "Cloud Object Storage Access Key Id",
+           "type": "string"
+         },
+        "aws-secret-access-key": {
+          "description": "Cloud Object Secret Access Key",
+          "type": "string"
+        },
+        "aws-bucket": {
+          "description": "Cloud Object Storage Bucket Name",
           "type": "string"
         },
         "prod-region": {
-            "description": "The bluemix region",
-            "type": "string"
+          "description": "The bluemix region",
+          "type": "string"
         },
         "prod-organization": {
             "description": "The bluemix org",
@@ -49,7 +61,10 @@
     "required": [
         "sa-instance",
         "mh-instance",
-        "cos-instance",
+        "aws-endpoint",
+        "aws-access-key-id",
+        "aws-secret-access-key",
+        "aws-bucket",
         "prod-region",
         "prod-organization",
         "prod-space",
@@ -81,10 +96,28 @@
           "key": "mh-instance"
        },
        {
-          "type": "textarea",
+          "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service Credentials",
-          "key": "cos-instance"
+          "title": "Cloud Object Storage Service Endpoint",
+          "key": "aws-endpoint"
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": "Cloud Object Storage Service access key",
+          "key": "aws-access-key-id"
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": "Cloud Object Storage Service access key",
+          "key": "aws-secret-access-key"
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": "Cloud Object Storage Service bucket name",
+          "key": "aws-secret-bucket"
         },
         {
             "type": "table",

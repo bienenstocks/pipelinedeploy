@@ -24,6 +24,7 @@
 package com.ibm.streams.beam.sample.datahistorian.io.aws;
 
 import com.ibm.streams.beam.sample.datahistorian.DataHistorianOptions;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -40,10 +41,10 @@ public class AWSConfig {
         JSONObject cred = (JSONObject) parser.parse(new FileReader(options.getCred()));
         JSONObject awscred = (JSONObject) cred.get("aws");
         options.setAwsServiceEndpoint((String) awscred.get("awsServiceEndpoint"));
-        options.setAwsCredentialsProvider(
-                new CustomAWSCredentialsProvider(
-                        (String) awscred.get("awsAccessKeyId"),
-                        (String) awscred.get("awsSecretKey")));
+        options.setAwsCredentialsProvider(new EnvironmentVariableCredentialsProvider());
+//                new CustomAWSCredentialsProvider(
+//                        (String) awscred.get("awsAccessKeyId"),
+//                        (String) awscred.get("awsSecretKey")));
     }
 
     public static String getBucket(DataHistorianOptions options) throws IOException, ParseException{
