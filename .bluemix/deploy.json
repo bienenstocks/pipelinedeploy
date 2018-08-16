@@ -117,7 +117,7 @@
           "type": "text",
           "readonly": false,
           "title": "Cloud Object Storage Service bucket name",
-          "key": "aws-secret-bucket"
+          "key": "aws-bucket"
         },
         {
             "type": "table",
