@@ -46,7 +46,7 @@ stages:
     value: ${COS_BUCKET}
     type: text
   - name: AWS_ENDPOINT
-    value: ${COS_BUCKET}
+    value: ${COS_ENDPOINT}
     type: text
   jobs:
   - name: Deploy flow
@@ -73,7 +73,11 @@ stages:
                 \"credentials\" : $PIPELINE_SA_INSTANCE
               }],
               \"messagehub\": $PIPELINE_MH_INSTANCE,
-              \"aws\": $PIPELINE_COS_INSTANCE
+              \"aws\": {
+                \"awsServiceEndpoint\": $AWS_ENDPOINT,
+                \"bucket\": $AWS_BUCKET,
+                \"filePrefix\": \"testing\"
+              }
             }" > vcap.json
 
       java -cp ./example-starter-kit-0.1-SNAPSHOT.jar:./dependency/com.ibm.streams.beam-1.2.1/com.ibm.streams.beam/lib/com.ibm.streams.beam.translation.jar \
