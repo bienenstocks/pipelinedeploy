@@ -39,8 +39,8 @@ public class AWSConfig {
         // parse credentials file into a JSONObject
         JSONParser parser = new JSONParser();
         JSONObject cred = (JSONObject) parser.parse(new FileReader(options.getCred()));
-        JSONObject awscred = (JSONObject) cred.get("aws");
-        options.setAwsServiceEndpoint((String) awscred.get("awsServiceEndpoint"));
+        JSONObject coscred = (JSONObject) cred.get("cos");
+        options.setAwsServiceEndpoint((String) coscred.get("endpoint"));
         options.setAwsCredentialsProvider(new EnvironmentVariableCredentialsProvider());
 //                new CustomAWSCredentialsProvider(
 //                        (String) awscred.get("awsAccessKeyId"),
@@ -51,16 +51,16 @@ public class AWSConfig {
         // parse credentials file into a JSONObject
         JSONParser parser = new JSONParser();
         JSONObject cred = (JSONObject) parser.parse(new FileReader(options.getCred()));
-        JSONObject awscred = (JSONObject) cred.get("aws");
-        return (String) awscred.get("bucket");
+        JSONObject coscred = (JSONObject) cred.get("cos");
+        return (String) coscred.get("bucket");
     }
 
     public static String getFilePrefix(DataHistorianOptions options) throws IOException, ParseException {
         // parse credentials file into a JSONObject
         JSONParser parser = new JSONParser();
         JSONObject cred = (JSONObject) parser.parse(new FileReader(options.getCred()));
-        JSONObject awscred = (JSONObject) cred.get("aws");
-        return (String) awscred.get("filePrefix");
+        JSONObject coscred = (JSONObject) cred.get("cos");
+        return (String) coscred.get("filePrefix");
     }
 }
 

@@ -25,7 +25,7 @@ stages:
   - type: stage
   properties:
   - name: CF_APP_NAME
-    value: undefined
+    value: ${CF_APP_NAME}
     type: text
   - name: PIPELINE_API_KEY
     value: ${API_KEY}
@@ -36,16 +36,16 @@ stages:
   - name: PIPELINE_MH_INSTANCE
     value: ${MH_INSTANCE}
     type: text
-  - name: AWS_SECRET_ACCESS_KEY
+  - name: COS_SECRET_ACCESS_KEY
     value: ${COS_SECRET}
     type: text
-  - name: AWS_ACCESS_KEY_ID
+  - name: COS_ACCESS_KEY_ID
     value: ${COS_KEY}
     type: text
-  - name: AWS_BUCKET
+  - name: PIPELINE_COS_BUCKET
     value: ${COS_BUCKET}
     type: text
-  - name: AWS_ENDPOINT
+  - name: PIPELINE_COS_ENDPOINT
     value: ${COS_ENDPOINT}
     type: text
   jobs:
@@ -61,8 +61,14 @@ stages:
       #!/bin/bash
       # Push app
 
-      CF_APP_NAME="myapp"
+      echo $region_id
+      if [[ $PIPELINE_COS_ENDPOINT != \"* ]]; then
+        PIPELINE_COS_ENDPOINT=\"$PIPELINE_COS_ENDPOINT\"
+      fi
 
+      if [[ $PIPELINE_COS_BUCKET != \"* ]]; then
+        PIPELINE_COS_BUCKET=\"$PIPELINE_COS_BUCKET\"
+      fi
       echo "generating vcap.json"
             echo "{
               \"streaming-analytics\":[{
@@ -70,9 +76,9 @@ stages:
                 \"credentials\" : $PIPELINE_SA_INSTANCE
               }],
               \"messagehub\": $PIPELINE_MH_INSTANCE,
-              \"aws\": {
-                \"awsServiceEndpoint\": $AWS_ENDPOINT,
-                \"bucket\": $AWS_BUCKET,
+              \"cos\": {
+                \"endpoint\": $PIPELINE_COS_ENDPOINT,
+                \"bucket\": $PIPELINE_COS_BUCKET,
                 \"filePrefix\": \"testing\"
               }
             }" > vcap.json
