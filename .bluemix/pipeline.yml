@@ -69,6 +69,10 @@ stages:
       if [[ $PIPELINE_COS_BUCKET != \"* ]]; then
         PIPELINE_COS_BUCKET=\"$PIPELINE_COS_BUCKET\"
       fi
+
+      PIPELINE_SA_INSTANCE="$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')"
+      PIPELINE_MH_INSTANCE="$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')"
+
       echo "generating vcap.json"
             echo "{
               \"streaming-analytics\":[{
