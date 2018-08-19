@@ -86,37 +86,37 @@
         {
            "type": "textarea",
            "readonly": false,
-           "title": "Streaming Analytics Service Credentials",
+           "title": "Streaming Analytics",
            "key": "sa-instance"
         },
         {
           "type": "textarea",
           "readonly": false,
-          "title": "Message Hub Service Credentials",
+          "title": "Message Hub",
           "key": "mh-instance"
        },
        {
           "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service Endpoint",
+          "title": "Endpoint",
           "key": "aws-endpoint"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service Access Key Id",
+          "title": "Access Key",
           "key": "aws-access-key-id"
         },
         {
           "type": "secure",
           "readonly": false,
-          "title": "Cloud Object Storage Service Secret Key",
+          "title": "Secret Key",
           "key": "aws-secret-access-key"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service Bucket Name",
+          "title": "Bucket",
           "key": "aws-bucket"
         },
         {
