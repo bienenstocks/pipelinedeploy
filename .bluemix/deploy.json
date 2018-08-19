@@ -15,27 +15,27 @@
     "type": "object",
     "properties": {
        "sa-instance": {
-         "description": "JSON containing the Streaming Analytics Service credentials. This can be found by clicking the Service Credentials link on the left hand side of the Streaming Analytics Service. Then click View Credentials to view the JSON.",
+         "description": "JSON containing the Streaming Analytics Service credentials. This can be found by clicking the Service Credentials link on the left side of the Streaming Analytics Service. Then, click View Credentials to view the JSON.",
           "type": "string"
        },
        "mh-instance": {
-          "description": "JSON containing the Message Hub Service credentials. This can be found by clicking the Service Credentials link on the left hand side of the Message Hub Service. Then click View Credentials to view the JSON.",
+          "description": "JSON containing the Message Hub Service credentials. This can be found by clicking the Service Credentials link on the left side of the Message Hub Service. Then, click View Credentials to view the JSON.",
           "type": "string"
         },
        "aws-endpoint": {
-          "description": "The endpoint can be found by clicking the Endpoint link of the left hand side of the Cloud Object Storage Service. Choose a public endpoint from the chosen region that contains the bucket to write to.",
+          "description": "The endpoint can be found by clicking the Endpoint link of the left side of the Cloud Object Storage service. Choose a public endpoint from the chosen region that contains the bucket to write to.",
           "type": "string"
         },
         "aws-access-key-id": {
-           "description": "The access key can be found by clicking the Service Credentials link on the left hand side of the Cloud Object Storage Service. Click on View Credentials, and get the access_key_id from cos_hmac_keys. To create credentials with HMAC keys, click on New Credentials. Specify {HMAC:true} in the Add Inline Configuration Parameters.",
+           "description": "The access key can be found by clicking the Service Credentials link on the left side of the Cloud Object Storage service. Click View Credentials, and get the access_key_id from cos_hmac_keys. To create credentials with HMAC keys, click New Credentials. Specify {HMAC:true} in the Add Inline Configuration Parameters.",
            "type": "string"
          },
         "aws-secret-access-key": {
-          "description": "The secret key can be found by clicking the Service Credentials link on the left hand side of the Cloud Object Storage Service. Click on View Credentials, and get the secret_access_key from cos_hmac_keys. To create credentials with HMAC keys, click on New Credentials. Specify {HMAC:true} in the Add Inline Configuration Parameters.",
+          "description": "The secret key can be found by clicking the Service Credentials link on the left side of the Cloud Object Storage service. Click View Credentials, and get the secret_access_key from cos_hmac_keys. To create credentials with HMAC keys, click New Credentials. Specify {HMAC:true} in the Add Inline Configuration Parameters.",
           "type": "password"
         },
         "aws-bucket": {
-          "description": "The Bucket Name can be found by clicking the Buckets link on the left hand side of the Cloud Object Storage Service. Choose or create a bucket in the region matching the endpoint",
+          "description": "The bucket name can be found by clicking the Buckets link on the left side of the Cloud Object Storage service. Choose or create a bucket in the region matching the endpoint.",
           "type": "string"
         },
         "prod-region": {
