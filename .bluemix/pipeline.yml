@@ -32,13 +32,13 @@ stages:
     type: text
   - name: PIPELINE_SA_INSTANCE
     value: ${SA_INSTANCE}
-    type: text
+    type: Text Area
   - name: PIPELINE_MH_INSTANCE
     value: ${MH_INSTANCE}
-    type: text
+    type: Text Area
   - name: COS_SECRET_ACCESS_KEY
     value: ${COS_SECRET}
-    type: text
+    type: Secure
   - name: COS_ACCESS_KEY_ID
     value: ${COS_KEY}
     type: text
