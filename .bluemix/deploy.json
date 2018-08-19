@@ -109,7 +109,7 @@
           "key": "aws-access-key-id"
         },
         {
-          "type": "secure",
+          "type": "password",
           "readonly": false,
           "title": "Secret Key",
           "key": "aws-secret-access-key"
