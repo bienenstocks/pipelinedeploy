@@ -87,6 +87,7 @@
            "type": "textarea",
            "readonly": false,
            "title": "Streaming Analytics",
+           "placeholder": "Streaming Analytics Service Credentials",
            "key": "sa-instance"
         },
         {
