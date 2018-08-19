@@ -15,11 +15,11 @@
     "type": "object",
     "properties": {
        "sa-instance": {
-         "description": "Streaming Analytics Instance Name",
+         "description": "JSON containing the Streaming Analytics Instance credentials",
           "type": "string"
        },
        "mh-instance": {
-          "description": "Message Hub Instance Name",
+          "description": "JSON containing the Message Hub Instance credentials",
           "type": "string"
         },
        "aws-endpoint": {
@@ -32,7 +32,7 @@
          },
         "aws-secret-access-key": {
           "description": "Cloud Object Secret Access Key",
-          "type": "string"
+          "type": "password"
         },
         "aws-bucket": {
           "description": "Cloud Object Storage Bucket Name",
@@ -104,19 +104,19 @@
         {
           "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service Access key Id",
+          "title": "Cloud Object Storage Service Access Key Id",
           "key": "aws-access-key-id"
         },
         {
           "type": "secure",
           "readonly": false,
-          "title": "Cloud Object Storage Service Secret key",
+          "title": "Cloud Object Storage Service Secret Key",
           "key": "aws-secret-access-key"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "Cloud Object Storage Service bucket name",
+          "title": "Cloud Object Storage Service Bucket Name",
           "key": "aws-bucket"
         },
         {

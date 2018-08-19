@@ -93,7 +93,7 @@ stages:
                 \"secretKey\": $COS_SECRET_ACCESS_KEY,
                 \"endpoint\": $PIPELINE_COS_ENDPOINT,
                 \"bucket\": $PIPELINE_COS_BUCKET,
-                \"filePrefix\": \"testing\"
+                \"filePrefix\": \"$CF_APP_NAME\"
               }
             }" > vcap.json
 
