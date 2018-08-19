@@ -70,6 +70,14 @@ stages:
         PIPELINE_COS_BUCKET=\"$PIPELINE_COS_BUCKET\"
       fi
 
+      if [[ $COS_ACCESS_KEY_ID != \"* ]]; then
+        COS_ACCESS_KEY_ID=\"$COS_ACCESS_KEY_ID\"
+      fi
+
+      if [[ $COS_SECRET_ACCESS_KEY != \"* ]]; then
+        COS_SECRET_ACCESS_KEY=\"$COS_SECRET_ACCESS_KEY\"
+      fi
+
       PIPELINE_SA_INSTANCE="$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')"
       PIPELINE_MH_INSTANCE="$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')"
 
@@ -81,12 +89,16 @@ stages:
               }],
               \"messagehub\": $PIPELINE_MH_INSTANCE,
               \"cos\": {
+                \"accessKeyId\": $COS_ACCESS_KEY_ID,
+                \"secretKey\": $COS_SECRET_ACCESS_KEY,
                 \"endpoint\": $PIPELINE_COS_ENDPOINT,
                 \"bucket\": $PIPELINE_COS_BUCKET,
                 \"filePrefix\": \"testing\"
               }
             }" > vcap.json
+
       cat ./vcap.json
+
       java -cp ./example-starter-kit-0.1-SNAPSHOT.jar:./dependency/com.ibm.streams.beam-1.2.1/com.ibm.streams.beam/lib/com.ibm.streams.beam.translation.jar \
             com.ibm.streams.beam.sample.datahistorian.DataHistorian \
             --runner=StreamsRunner \

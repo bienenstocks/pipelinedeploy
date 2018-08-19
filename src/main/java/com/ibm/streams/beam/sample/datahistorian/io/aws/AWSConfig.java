@@ -24,7 +24,8 @@
 package com.ibm.streams.beam.sample.datahistorian.io.aws;
 
 import com.ibm.streams.beam.sample.datahistorian.DataHistorianOptions;
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -41,7 +42,10 @@ public class AWSConfig {
         JSONObject cred = (JSONObject) parser.parse(new FileReader(options.getCred()));
         JSONObject coscred = (JSONObject) cred.get("cos");
         options.setAwsServiceEndpoint((String) coscred.get("endpoint"));
-        options.setAwsCredentialsProvider(new EnvironmentVariableCredentialsProvider());
+        options.setAwsCredentialsProvider(new AWSStaticCredentialsProvider(
+                new BasicAWSCredentials((String) coscred.get("accessKeyId"),
+                                    (String) coscred.get("secretKey"))));
+                //new EnvironmentVariableCredentialsProvider());
 //                new CustomAWSCredentialsProvider(
 //                        (String) awscred.get("awsAccessKeyId"),
 //                        (String) awscred.get("awsSecretKey")));
