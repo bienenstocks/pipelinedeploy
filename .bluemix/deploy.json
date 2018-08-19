@@ -108,7 +108,7 @@
           "key": "aws-access-key-id"
         },
         {
-          "type": "text",
+          "type": "secure",
           "readonly": false,
           "title": "Cloud Object Storage Service Secret key",
           "key": "aws-secret-access-key"
