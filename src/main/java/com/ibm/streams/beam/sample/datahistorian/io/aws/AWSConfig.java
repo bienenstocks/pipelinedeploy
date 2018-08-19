@@ -45,10 +45,6 @@ public class AWSConfig {
         options.setAwsCredentialsProvider(new AWSStaticCredentialsProvider(
                 new BasicAWSCredentials((String) coscred.get("accessKeyId"),
                                     (String) coscred.get("secretKey"))));
-                //new EnvironmentVariableCredentialsProvider());
-//                new CustomAWSCredentialsProvider(
-//                        (String) awscred.get("awsAccessKeyId"),
-//                        (String) awscred.get("awsSecretKey")));
     }
 
     public static String getBucket(DataHistorianOptions options) throws IOException, ParseException{
