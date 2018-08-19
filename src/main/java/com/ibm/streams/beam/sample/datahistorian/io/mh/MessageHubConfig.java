@@ -57,10 +57,9 @@ public class MessageHubConfig extends HashMap<String, Object> {
         JSONObject mhcred = (JSONObject) cred.get("messagehub");
 
         // concatenate servers into a comma-separated string
-//        bootstrapServers = String.join(
-//                ",", (JSONArray) cred.get("kafka_brokers_sasl"));
+        bootstrapServers = String.join(",", (JSONArray) mhcred.get("kafka_brokers_sasl"));
 
-        bootstrapServers = mhcred.get("kafka_brokers_sasl").toString();
+//        bootstrapServers = mhcred.get("kafka_brokers_sasl").toString();
 
         // add properties to the config
         put("bootstrap.servers", bootstrapServers);
