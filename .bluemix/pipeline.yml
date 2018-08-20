@@ -32,7 +32,7 @@ stages:
     type: text
   - name: PIPELINE_SA_INSTANCE
     value: |-
-      echo ${SA_INSTANCE}
+      $(echo ${SA_INSTANCE})
     type: textarea
   - name: PIPELINE_MH_INSTANCE
     value: ${MH_INSTANCE}
