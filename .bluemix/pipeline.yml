@@ -32,11 +32,11 @@ stages:
     type: text
   - name: PIPELINE_SA_INSTANCE
     value: |-
-      "$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')"
+      $(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
     type: textarea
   - name: PIPELINE_MH_INSTANCE
     value: |-
-      "$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')"
+      $(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
     type: textarea
   - name: COS_SECRET_ACCESS_KEY
     value: ${COS_SECRET}
