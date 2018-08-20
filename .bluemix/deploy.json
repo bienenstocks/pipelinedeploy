@@ -22,7 +22,7 @@
        "mh-instance": {
           "description": "JSON containing the Message Hub Service credentials. This can be found by clicking the Service Credentials link on the left side of the Message Hub Service. Then, click View Credentials to view the JSON.",
           "type": "string",
-          "pattern": "\\S"
+          "quoted": true
         },
        "aws-endpoint": {
           "description": "The endpoint can be found by clicking the Endpoint link of the left side of the Cloud Object Storage service. Choose a public endpoint from the chosen region that contains the bucket to write to.",
