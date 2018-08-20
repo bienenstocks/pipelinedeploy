@@ -31,7 +31,8 @@ stages:
     value: ${API_KEY}
     type: text
   - name: PIPELINE_SA_INSTANCE
-    value: ${SA_INSTANCE}
+    value: |-
+      echo ${SA_INSTANCE}
     type: textarea
   - name: PIPELINE_MH_INSTANCE
     value: ${MH_INSTANCE}
@@ -48,12 +49,6 @@ stages:
   - name: PIPELINE_COS_ENDPOINT
     value: ${COS_ENDPOINT}
     type: text
-  script: |-
-        #!/bin/bash
-        echo "PIPELINE_SA_INSTANCE=$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')"
-        PIPELINE_SA_INSTANCE=$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')
-        echo "PIPELINE_MH_INSTANCE=$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')"
-        PIPELINE_MH_INSTANCE=$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')
   jobs:
   - name: Deploy flow
     type: deployer
