@@ -46,8 +46,8 @@ services:
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          SA_INSTANCE: "\"'{{form.pipeline.parameters.sa-instance}}'\""
-          MH_INSTANCE: "\"'{{form.pipeline.parameters.mh-instance}}'\""
+          SA_INSTANCE: "{{form.pipeline.parameters.sa-instance}}"
+          MH_INSTANCE: "{{form.pipeline.parameters.mh-instance}}"
           COS_SECRET: '{{form.pipeline.parameters.aws-secret-access-key}}'
           COS_KEY: '{{form.pipeline.parameters.aws-access-key-id}}'
           COS_BUCKET: '{{form.pipeline.parameters.aws-bucket}}'
