@@ -31,10 +31,14 @@ stages:
     value: ${API_KEY}
     type: text
   - name: PIPELINE_SA_INSTANCE
-    value: ${SA_INSTANCE}
-    type: text
+    value: |-
+      SA_INSTANCE="$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')"
+      \"${SA_INSTANCE}\"
+    type: textarea
   - name: PIPELINE_MH_INSTANCE
-    value: ${MH_INSTANCE}
+    value: |-
+      MH_INSTANCE="$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')"
+      \"${MH_INSTANCE}\"
     type: text
   - name: COS_SECRET_ACCESS_KEY
     value: ${COS_SECRET}
@@ -77,9 +81,6 @@ stages:
       if [[ $COS_SECRET_ACCESS_KEY != \"* ]]; then
         COS_SECRET_ACCESS_KEY=\"$COS_SECRET_ACCESS_KEY\"
       fi
-
-      PIPELINE_SA_INSTANCE="$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')"
-      PIPELINE_MH_INSTANCE="$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')"
 
       echo "generating vcap.json"
             echo "{
