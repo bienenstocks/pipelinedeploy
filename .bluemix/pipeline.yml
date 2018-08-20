@@ -31,10 +31,10 @@ stages:
     value: ${API_KEY}
     type: text
   - name: PIPELINE_SA_INSTANCE
-    value: '"${SA_INSTANCE}"'
+    value: \" + "${SA_INSTANCE}" + \"
     type: text
   - name: PIPELINE_MH_INSTANCE
-    value: '"${MH_INSTANCE}"'
+    value: \" + ${MH_INSTANCE} + \"
     type: text
   - name: COS_SECRET_ACCESS_KEY
     value: ${COS_SECRET}
