@@ -31,8 +31,7 @@ stages:
     value: ${API_KEY}
     type: text
   - name: PIPELINE_SA_INSTANCE
-    value: |-
-      $(echo ${SA_INSTANCE})
+    value: ${SA_INSTANCE}
     type: textarea
   - name: PIPELINE_MH_INSTANCE
     value: ${MH_INSTANCE}
@@ -61,6 +60,11 @@ stages:
     script: |
       #!/bin/bash
       # Push app
+
+      echo "PIPELINE_SA_INSTANCE=$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')"
+      PIPELINE_SA_INSTANCE=$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')
+      echo "PIPELINE_MH_INSTANCE=$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')"
+      PIPELINE_MH_INSTANCE=$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')
 
       echo $region_id
       if [[ $PIPELINE_COS_ENDPOINT != \"* ]]; then
