@@ -16,6 +16,16 @@ stages:
         #!/bin/bash
         export JAVA_HOME=$JAVA8_HOME
         mvn -B -Pstreams-runner package
+
+        echo "CF_APP_NAME=${CF_APP_NAME}"
+        echo "PIPELINE_API_KEY=${API_KEY}"
+        echo "PIPELINE_SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')"
+        echo "PIPELINE_MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')"
+        echo "COS_SECRET_ACCESS_KEY=${COS_SECRET}"
+        echo "COS_ACCESS_KEY_ID=${COS_KEY}"
+        echo "PIPELINE_COS_BUCKET=${COS_BUCKET}"
+        echo "PIPELINE_COS_ENDPOINT=${COS_ENDPOINT}"
+
 - name: Deploy flow to development
   inputs:
   - type: job
@@ -23,33 +33,6 @@ stages:
     job: Build driver
   triggers:
   - type: stage
-  properties:
-  - name: CF_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: PIPELINE_API_KEY
-    value: ${API_KEY}
-    type: text
-  - name: PIPELINE_SA_INSTANCE
-    value: |-
-      $(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
-    type: textarea
-  - name: PIPELINE_MH_INSTANCE
-    value: |-
-      $(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
-    type: textarea
-  - name: COS_SECRET_ACCESS_KEY
-    value: ${COS_SECRET}
-    type: Secure
-  - name: COS_ACCESS_KEY_ID
-    value: ${COS_KEY}
-    type: text
-  - name: PIPELINE_COS_BUCKET
-    value: ${COS_BUCKET}
-    type: text
-  - name: PIPELINE_COS_ENDPOINT
-    value: ${COS_ENDPOINT}
-    type: text
   jobs:
   - name: Deploy flow
     type: deployer
