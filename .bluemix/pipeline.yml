@@ -14,9 +14,6 @@ stages:
     build_type: maven
     script: |-
         #!/bin/bash
-        export JAVA_HOME=$JAVA8_HOME
-        mvn -B -Pstreams-runner package
-
         echo "CF_APP_NAME=${CF_APP_NAME}"
         echo "PIPELINE_API_KEY=${API_KEY}"
         echo "PIPELINE_SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')"
@@ -25,6 +22,9 @@ stages:
         echo "COS_ACCESS_KEY_ID=${COS_KEY}"
         echo "PIPELINE_COS_BUCKET=${COS_BUCKET}"
         echo "PIPELINE_COS_ENDPOINT=${COS_ENDPOINT}"
+
+        export JAVA_HOME=$JAVA8_HOME
+        mvn -B -Pstreams-runner package
 
 - name: Deploy flow to development
   inputs:
