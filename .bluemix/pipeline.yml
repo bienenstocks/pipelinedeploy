@@ -21,8 +21,10 @@ stages:
     build_type: maven
     script: |-
       #!/bin/bash
-      SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
-      MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
+      SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]' | sed 's/"/\\"/g')
+      MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]' | sed 's/"/\\"/g')
+
+      [[ -d "${ARCHIVE_DIR}" ]] || mkdir ${ARCHIVE_DIR}
 
       `echo "SA_INSTANCE=${SA_INSTANCE}" >> $ARCHIVE_DIR/build.properties`
       `echo "MH_INSTANCE=${MH_INSTANCE}" >> $ARCHIVE_DIR/build.properties`
@@ -68,8 +70,7 @@ stages:
       #!/bin/bash
       # Push app
 
-      cat $ARCHIVE_DIR/build.properties
-      . $ARCHIVE_DIR/build.properties
+      . build.properties
 
       if [[ $PIPELINE_COS_ENDPOINT != \"* ]]; then
         PIPELINE_COS_ENDPOINT=\"$PIPELINE_COS_ENDPOINT\"
