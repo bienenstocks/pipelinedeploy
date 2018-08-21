@@ -20,15 +20,15 @@ stages:
     artifact_dir: target
     build_type: maven
     script: |-
-        #!/bin/bash
-        SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
-        MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
+      #!/bin/bash
+      SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
+      MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
 
-        `echo "SA_INSTANCE=${SA_INSTANCE}" >> build.properties`
-        `echo "MH_INSTANCE=${MH_INSTANCE}" >> build.properties`
+      `echo "SA_INSTANCE=${SA_INSTANCE}" >> build.properties`
+      `echo "MH_INSTANCE=${MH_INSTANCE}" >> build.properties`
 
-        export JAVA_HOME=$JAVA8_HOME
-        mvn -B -Pstreams-runner package
+      export JAVA_HOME=$JAVA8_HOME
+      mvn -B -Pstreams-runner package
 - name: Deploy flow to development
   inputs:
   - type: job
