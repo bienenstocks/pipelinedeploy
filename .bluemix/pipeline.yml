@@ -24,8 +24,8 @@ stages:
       SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
       MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
 
-      `echo "SA_INSTANCE=${SA_INSTANCE}" >> build.properties`
-      `echo "MH_INSTANCE=${MH_INSTANCE}" >> build.properties`
+      `echo "SA_INSTANCE=${SA_INSTANCE}" >> $ARCHIVE_DIR/build.properties`
+      `echo "MH_INSTANCE=${MH_INSTANCE}" >> $ARCHIVE_DIR/build.properties`
 
       export JAVA_HOME=$JAVA8_HOME
       mvn -B -Pstreams-runner package
@@ -68,7 +68,8 @@ stages:
       #!/bin/bash
       # Push app
 
-      . build.properties
+      cat $ARCHIVE_DIR/build.properties
+      . $ARCHIVE_DIR/build.properties
 
       if [[ $PIPELINE_COS_ENDPOINT != \"* ]]; then
         PIPELINE_COS_ENDPOINT=\"$PIPELINE_COS_ENDPOINT\"
