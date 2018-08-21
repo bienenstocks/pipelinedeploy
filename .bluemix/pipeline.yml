@@ -7,18 +7,18 @@ stages:
     service: ${SAMPLE_REPO}
   triggers:
   - type: commit
+  properties:
+  - name: SA_INSTANCE
+    value: ${SA_INSTANCE}
+    type: textarea
+  - name: MH_INSTANCE
+    value: ${MH_INSTANCE}
+    type: textarea
   jobs:
   - name: Build driver
     type: builder
     artifact_dir: target
     build_type: maven
-    properties:
-    - name: SA_INSTANCE
-      value: ${SA_INSTANCE}
-      type: textarea
-    - name: MH_INSTANCE
-      value: ${MH_INSTANCE}
-      type: textarea
     script: |-
         #!/bin/bash
 
