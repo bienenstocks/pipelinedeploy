@@ -22,12 +22,11 @@ stages:
     script: |-
         #!/bin/bash
 
-        export SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
-        export MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
-        echo $MH_INSTANCE
-        echo $SA_INSTANCE
+        SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
+        MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
 
-        env
+       `echo "SA_INSTANCE=${SA_INSTANCE}" >> build.properties`
+       `echo "MH_INSTANCE=${MH_INSTANCE}" >> build.properties`
 
         export JAVA_HOME=$JAVA8_HOME
         mvn -B -Pstreams-runner package
@@ -70,13 +69,7 @@ stages:
       #!/bin/bash
       # Push app
 
-      echo "check vars"
-      echo $SA_INSTANCE
-      echo $MH_INSTANCE
-      echo $region_id
-
-      echo "dump all env"
-      env
+      . build.properties
 
       if [[ $PIPELINE_COS_ENDPOINT != \"* ]]; then
         PIPELINE_COS_ENDPOINT=\"$PIPELINE_COS_ENDPOINT\"
