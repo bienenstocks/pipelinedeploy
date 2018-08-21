@@ -22,10 +22,12 @@ stages:
     script: |-
         #!/bin/bash
 
-        echo "SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')"
         export SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
-        echo "MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')"
-        export v=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
+        export MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
+        echo $MH_INSTANCE
+        echo $SA_INSTANCE
+
+        env
 
         export JAVA_HOME=$JAVA8_HOME
         mvn -B -Pstreams-runner package
@@ -69,8 +71,8 @@ stages:
       # Push app
 
       echo "check vars"
-      echo $PIPELINE_SA_INSTANCE
-      echo $PIPELINE_MH_INSTANCE
+      echo $SA_INSTANCE
+      echo $MH_INSTANCE
       echo $region_id
 
       echo "dump all env"
