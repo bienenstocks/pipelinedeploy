@@ -12,9 +12,21 @@ stages:
     type: builder
     artifact_dir: target
     build_type: maven
+    properties:
+    - name: SA_INSTANCE
+        value: ${SA_INSTANCE}
+        type: textarea
+    - name: MH_INSTANCE
+        value: ${MH_INSTANCE}
+        type: textarea
     script: |-
         #!/bin/bash
-        echo $PIPELINE_API_KEY
+
+        echo "SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')"
+        export SA_INSTANCE=$(echo -e "${SA_INSTANCE}" | tr -d '[:space:]')
+        echo "MH_INSTANCE=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')"
+        export v=$(echo -e "${MH_INSTANCE}" | tr -d '[:space:]')
+
         export JAVA_HOME=$JAVA8_HOME
         mvn -B -Pstreams-runner package
 - name: Deploy flow to development
@@ -62,12 +74,11 @@ stages:
       #!/bin/bash
       # Push app
 
-      echo "PIPELINE_SA_INSTANCE=$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')"
-      PIPELINE_SA_INSTANCE=$(echo -e "${PIPELINE_SA_INSTANCE}" | tr -d '[:space:]')
-      echo "PIPELINE_MH_INSTANCE=$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')"
-      PIPELINE_MH_INSTANCE=$(echo -e "${PIPELINE_MH_INSTANCE}" | tr -d '[:space:]')
-
+      echo "check vars"
+      echo $PIPELINE_SA_INSTANCE
+      echo $PIPELINE_MH_INSTANCE
       echo $region_id
+
       if [[ $PIPELINE_COS_ENDPOINT != \"* ]]; then
         PIPELINE_COS_ENDPOINT=\"$PIPELINE_COS_ENDPOINT\"
       fi
