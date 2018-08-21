@@ -79,6 +79,9 @@ stages:
       echo $PIPELINE_MH_INSTANCE
       echo $region_id
 
+      echo "dump all env"
+      env
+
       if [[ $PIPELINE_COS_ENDPOINT != \"* ]]; then
         PIPELINE_COS_ENDPOINT=\"$PIPELINE_COS_ENDPOINT\"
       fi
