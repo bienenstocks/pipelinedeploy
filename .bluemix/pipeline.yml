@@ -14,11 +14,11 @@ stages:
     build_type: maven
     properties:
     - name: SA_INSTANCE
-        value: ${SA_INSTANCE}
-        type: textarea
+      value: ${SA_INSTANCE}
+      type: textarea
     - name: MH_INSTANCE
-        value: ${MH_INSTANCE}
-        type: textarea
+      value: ${MH_INSTANCE}
+      type: textarea
     script: |-
         #!/bin/bash
 
